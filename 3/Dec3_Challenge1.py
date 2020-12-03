@@ -8,12 +8,8 @@ tree_count = 0
 
 def move(starting_row, starting_column):
     starting_row = starting_row + 1
-
-
-    if starting_column > 27:
-        starting_column = starting_column - 28
-    else:
-        starting_column = starting_column + 3
+    starting_column = starting_column + 3
+    starting_column = starting_column % 31
 
     return ([starting_row, starting_column])
 
