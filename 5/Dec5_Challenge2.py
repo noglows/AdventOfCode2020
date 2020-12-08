@@ -4,14 +4,6 @@ import sys
 ticket_file = open("/Users/jess/Documents/Code/Advent2020/5/Data.txt", "r")
 tickets = ticket_file.readlines()
 
-def seat_code(ticket):
-    row = find_row(ticket)
-    col = find_seat(ticket)
-    print(row)
-    print(col)
-    return ((row * 8) + col)
-
-
 seen = set()
 missing = []
 highest = 0
