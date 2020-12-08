@@ -8,7 +8,6 @@ log = {}
 for line in lines:
     line = int(line)
     if line in log:
-        print("found it")
         print(log[line] * line)
     else:
         looking_value = 2020 - line 
