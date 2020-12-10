@@ -1,9 +1,36 @@
-import re
-
-codes = open("/Users/jess/Documents/Code/Advent2020/4/Data.txt", "r")
-lines = codes.readlines()
+passports = open("/Users/jess/Documents/Code/Advent2020/4/Data.txt", "r")
+lines = passports.readlines()
 
 passports = []
+passport = ""
+valid = 0
+
+for line in lines:
+    if line == "\n" or line == lines[-1]:
+        passports.append(passport)
+        passport = "" 
+    else:
+        passport += line
+        passport += " "
+    
+for passport in passports:
+    split = passport.split(" ")
+    split.pop(-1)
+    if len(split) == 8:
+        valid += 1
+    elif len(split) == 7:
+        valid_count = 0
+        for a in split:
+            valid_count += a.count("cid")
+        if valid_count == 0:
+            valid += 1
+            
+print("Part One Solution is: ")
+print(valid)
+        
+
+# Part Two 
+
 passport = ""
 valid = 0
 
@@ -59,9 +86,7 @@ def validate_hcl(hair_color):
         if hair_color[0] == "#":
             hair_color = hair_color.replace("#", "")
             for letter in hair_color:
-                if letter in allowed:
-                    print("It's good")
-                else: 
+                if letter not in allowed: 
                     return False
                 return True
             else: return False
@@ -98,16 +123,6 @@ def check_validity(passport):
     isValid = byr and ecl and eyr and hcl and hgt and iyr and pid
     return isValid
 
-for line in lines:
-    if line == "\n":
-        passports.append(passport)
-        passport = "" 
-    elif line == lines[-1]:
-        passports.append(passport)
-    else:
-        passport += line
-        passport += " "
-
 for passport in passports:
     split = passport.split(" ")
     split.pop(-1)
@@ -121,6 +136,7 @@ for passport in passports:
         if valid_count == 0:
             if check_validity(split):
                 valid += 1
-            
+
+print("Part Two Solution is: ")          
 print(valid)
         
