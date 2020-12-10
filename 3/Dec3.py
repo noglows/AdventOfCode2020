@@ -1,6 +1,14 @@
-# open and read the file
-codes = open("/Users/jess/Documents/Code/Advent2020/3/Data.txt", "r")
-lines = codes.readlines()
+# Open and read the file
+trees = open("/Users/jess/Documents/Code/Advent2020/3/Data.txt", "r")
+lines = trees.readlines()
+
+# Part One
+row_pointer = 0
+vertical_pointer = 0
+tree_count = 0
+
+
+# Part Two
 length = len(lines)
 col_count = len(lines[0])-1
 
@@ -29,17 +37,15 @@ def skiPath(lines, right_shift, down_shift):
 
 
 one_one_path = skiPath(lines, 1, 1)
-print(one_one_path)
 three_one_path = skiPath(lines, 3, 1)
+print("Part One Solution is: ")
 print(three_one_path)
 five_one_path = skiPath(lines, 5, 1)
-print(five_one_path)
 seven_one_path = skiPath(lines, 7, 1)
-print(seven_one_path)
 one_two_path = skiPath(lines, 1, 2)
-print(one_two_path)
 
 answer = one_one_path * three_one_path * five_one_path * seven_one_path * one_two_path
+print("Part Two Solution is: ")
 print(answer)
 
 
